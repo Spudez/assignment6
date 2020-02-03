@@ -8,6 +8,13 @@ public class data {
     private String body;
 
 
+    public data(int userId, int id, String title, String body) {
+        this.userId = userId;
+        this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
     //Setter, getter
 
     public int getId() {

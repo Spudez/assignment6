@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
         mQueue = Volley.newRequestQueue(this);
 
-       // mProductList.add(new data(1, 1, "Kissa", "Koira"));
-        //mProductList.add(new data(2, 1, "Katti", "Kassi"));
+        mProductList.add(new data(1, 1, "Kissa", "Koira"));
+        mProductList.add(new data(2, 1, "Katti", "Kassi"));
 
 
         //Init adapter
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                                 //getting the json object of the particular index inside the array
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 //creating a hero object and giving them the values from json object
-                                data item = new data();
+                                data item = new data(jsonObject.getInt("userId"), jsonObject.getInt("id"), jsonObject.getString("title"), jsonObject.getString("body") );
                                 item.setuserId(jsonObject.getInt("userId"));
                                 item.setId(jsonObject.getInt("id"));
                                 item.setTitle(jsonObject.getString("title"));
