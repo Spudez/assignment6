@@ -6,15 +6,22 @@ import java.io.Serializable;
 
 public class data implements Serializable {
 
-    public String time;
+    String Time;
 
+    public data() {
 
-    public String getTime () {
-        return time;
     }
 
-    public void setTime(String time){
-        this.time = time;
+    public data(String time) {
+        this.Time = time;
+
     }
 
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
 }

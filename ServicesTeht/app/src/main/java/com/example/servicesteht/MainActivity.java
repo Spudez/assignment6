@@ -15,8 +15,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
+    data aika = new data();
     private TextView textview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +23,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         this.textview = findViewById(R.id.lista);
 
-
         try{
             BroadcastReceiver myrcver  = new BootReceiver();
             IntentFilter screenStateFilter = new IntentFilter();
             screenStateFilter.addAction(Intent.ACTION_SCREEN_ON);
             screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
             registerReceiver(myrcver, screenStateFilter);
-            data aika = (data) getIntent().getSerializableExtra("serialized_data");
-            aika.setTime("123");
-            Log.d("myTag", aika.getTime());
-            String time = aika.getTime();
-            onResume(time);
+            Intent i= getIntent();
+            aika = (data) i.getSerializableExtra("serialized_data");
+            //Toast.makeText(getApplicationContext(), aika.getTime(), Toast.LENGTH_LONG).show();
 
 
         }
@@ -47,10 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void onResume(String time){
+    @Override
+    public void onResume(){
         super.onResume();
+        // Tuon aika objektin tuominen getIntentillä ei toimi, tulee vaan null. ja kaataa ohjelman
 
-        textview.append("\n\n"+""+time);
+           // String time = aika.getTime();
+           // Toast.makeText(getApplicationContext(), time, Toast.LENGTH_LONG).show();
+          //  textview.append("\n\n"+""+time);
 
     }
 }

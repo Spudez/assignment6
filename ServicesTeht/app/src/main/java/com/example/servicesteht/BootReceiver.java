@@ -32,7 +32,7 @@ public class BootReceiver extends BroadcastReceiver {
                     Date currentTime = Calendar.getInstance().getTime();
                     String time = currentTime.toString();
                     data.setTime(time);
-                    Toast.makeText(context, "auki", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, data.getTime(), Toast.LENGTH_LONG).show();
                     intent.putExtra("serialized_data", data);
                     context.startActivity(intent);
 
